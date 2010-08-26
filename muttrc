@@ -1,0 +1,115 @@
+macro index \cb |urlview\n 'call urlview to extract URLs out of a message'                                      
+macro index <f3> "c =Sent Mail\n"                                                                               
+set realname="Aditya Sarawgi"                                                                                   
+set from="Aditya Sarawgi"                                                                                       
+set use_from=yes                                                                                                
+set alias_file="~/.mutt/alias"
+# set reverse_alias                                                                                             
+#set arrow_cursor                                                                                               
+## For saving copies of sent mail locally and on mail account                                                   
+set copy=yes                                                                                                    
+set record="~/Mail/sent-mail"                                                                                   
+set record='imaps://imap.gmail.com/[Gmail]/Sent Mail'                                                           
+
+set sort=threads
+
+# activate TLS if available on the server
+
+## Header Caching
+set header_cache="~/.headercache"
+
+## Pager options
+set pager="builtin"
+set pager_context=5
+unset resolve      
+ignore *           
+# First, ignore all headers.  
+# In the next line we specify which ones we'd like to see.
+unignore From To Reply-To Subject X-Mailer Cc Date        
+#Show these headers (ignoring all, then selecting some is easy)
+hdr_order From: Date: To: Cc: Subject                          
+#Order in which the headers are presented.                     
+bind pager <up> previous-line                                  
+bind pager <down> next-line               
+
+## SendMail Configuration
+set sendmail="/usr/local/bin/esmtp"
+set envelope_from=yes
+## Composing Messages
+set editor="nano"    
+set from="Aditya Sarawgi <sarawgi.aditya@gmail.com>"
+set askcc                                           
+set fcc_attach                                      
+unset reply_self                                    
+set attribution="On %d, %n wrote:"                  
+set forward_format="Fwd: %s"                        
+set indent_str="> "                                 
+set postpone=ask-no                                 
+set tilde                                           
+
+unset beep
+unset confirmappend
+unset use_domain   
+set recall=no      
+
+push <show-version>
+set quit=ask-yes   
+set nomove         
+unset mark_old     
+
+set imap_user = 'sarawgi.aditya@gmail.com'
+set imap_pass = ''                        
+set spoolfile = imaps://imap.gmail.com:993/INBOX
+set folder = imaps://imap.gmail.com:993         
+set record='imaps://imap.gmail.com/[Gmail]/Sent Mail'
+set postponed='imaps://imap.gmail.com/[Gmail]/Drafts'
+set certificate_file=/home/aditya/.authenticate/ca.pem            
+
+## Key board Shortcuts
+bind generic - first-entry
+#minus sign takes me to the top of the list
+
+bind generic = last-entry
+#equals sign takes me to the bottom of the list
+
+bind generic L bottom-page
+#to the bottom,           
+
+bind generic M middle-page
+# middle, and             
+
+bind generic H top-page
+#top of the screen     
+
+bind index [ previous-unread
+#to the previous unread message in the list
+
+bind index ] next-unread
+#or the next unread message.
+
+
+## Colors
+color normal    green black
+color attachment brightyellow black
+color hdrdefault cyan black
+color indicator black cyan
+color markers   brightred black
+color quoted    green black
+color signature cyan black
+color status    brightgreen blue
+color tilde     blue black
+color tree      red black
+
+color index  magenta    default  ~T         # Tagged
+color index  cyan       default  ~D         # Delck ^To:
+#color header   brightcyan black ^Reply-To:
+#color header   brightcyan black ^Cc:
+#color header   brightblue black ^Subject:
+
+color body      brightred black [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+# identifies email addresses
+
+color body      brightblue black (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+# identifies URLs
+
+color body red black >+
