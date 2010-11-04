@@ -19,7 +19,7 @@ fi
 export CVSROOT=:pserver:anoncvs@anoncvs.tw.FreeBSD.org:/home/ncvs
 
 # Bash like Prompt
-PROMPT='[%n@%M %~]%# 
+PROMPT="[%n@%M:%d]%# "  
 
 # History options.
 export HISTFILE=~/.zsh_history
