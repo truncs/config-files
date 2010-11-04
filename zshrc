@@ -126,3 +126,12 @@ compinit
 # End of lines added by compinstall
 
 export EDITOR=vi
+
+
+########################################################################
+# For Clojure
+#########################################################################
+
+export CLOJURE_EXT=/usr/local/share/java/classes/
+PATH=$PATH:/opt/clojure-contrib/launchers/bash
+alias clj=clj-env-dir
