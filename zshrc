@@ -2,9 +2,7 @@
 # Settings                                                                                                      
 ################################################################################                                
 
-#### P4 Variables 
-
-
+# P4 Variables 
 
 export P4PORT=perforce.freebsd.org:1666
 export P4USER=truncs
@@ -12,11 +10,16 @@ export P4PASSWD=
 export P4CLIENT=aditya
 export P4DIFF=/usr/bin/diff
 
-## Anon CVS options
+# Perforce 
+if [[ -e $HOME/.p4config ]]; then
+        source ~/.bashrc         
+fi                               
+
+# Anon CVS options
 export CVSROOT=:pserver:anoncvs@anoncvs.tw.FreeBSD.org:/home/ncvs
 
-
-PROMPT='[%n@%M %~]%# ' # Bash Like Prompt
+# Bash like Prompt
+PROMPT='[%n@%M %~]%# 
 
 # History options.
 export HISTFILE=~/.zsh_history
@@ -82,22 +85,10 @@ alias asdf='setxkbmap dvorak'
 #alias apu='sudo aptitude update'
 #alias api='sudo aptitude install'
 
-################################################################################
-# Prompt jazz                                                                   
-################################################################################
-
-
 # Path for my goodies.
-export PATH=/sbin:/usr/sbin:/usr/local/sbin:/usr/X11R6/bin:~/bin:$PATH
+export PATH=/sbin:/usr/sbin:/usr/local/sbin:/usr/X11R6/bin:~/bin:$PATH:/opt/clojure-contrib/launchers/bash
 
-# Perforce
-if [[ -e $HOME/.p4config ]]; then
-        source ~/.bashrc         
-fi                               
-
-                                         
-
-
+# Extended Globbing
 setopt extended_glob
 preexec () {        
     if [[ "$TERM" == "screen" ]]; then
@@ -105,8 +96,6 @@ preexec () {
     echo -n "\ek$CMD\e\\"             
     fi                                
 }                                     
-
-
 
 ################################################################################
 # Completion
@@ -123,7 +112,6 @@ zstyle :compinstall filename '/home/aditya/.zshrc'
 
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
 
 export EDITOR=vi
 
@@ -133,5 +121,4 @@ export EDITOR=vi
 #########################################################################
 
 export CLOJURE_EXT=/usr/local/share/java/classes/
-PATH=$PATH:/opt/clojure-contrib/launchers/bash
 alias clj=clj-env-dir
