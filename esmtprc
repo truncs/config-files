@@ -1,0 +1,6 @@
+identity sarawgi.aditya@gmail.com
+hostname smtp.gmail.com:587
+username "sarawgi.aditya@gmail.com"
+password 
+starttls required
+mda "/usr/local/bin/procmail -d %T"
